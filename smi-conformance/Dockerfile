@@ -7,7 +7,7 @@ WORKDIR /go/src/github.com/layer5io/learn-layer5/smi-conformance/
 # RUN git describe --tags `git rev-list --tags --max-count=1` >> /home/com/version
 RUN go mod vendor && go build -a -ldflags "-s -w" -o /home/meshery/smi_conformance main.go
 
-FROM alpine:latest
+FROM alpine:3.15
 
 RUN apk --no-cache add ca-certificates && mkdir /home/test-yamls && mkdir /home/test-yamls/traffic-access && mkdir /home/test-yamls/traffic-spec && mkdir /home/test-yamls/traffic-split
 COPY --from=build-img /home/meshery/** /home/
