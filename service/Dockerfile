@@ -1,4 +1,4 @@
-FROM golang:1.18beta1 as bd
+FROM golang:1.21rc2 as bd
 WORKDIR /github.com/layer5io/sample-app-service
 ADD . .
 RUN GOPROXY=direct GOSUMDB=off go build -a -o ./main .
